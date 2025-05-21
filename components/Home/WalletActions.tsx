@@ -27,7 +27,6 @@ export function WalletActions() {
 
   return (
     <div className="space-y-4 border border-[#333] rounded-md p-4">
-      <h2 className="text-xl font-bold text-left">sdk.wallet.ethProvider</h2>
       <div className="flex flex-row space-x-4 justify-start items-start">
         {isConnected ? (
           <div className="flex flex-col space-y-4 justify-start">
@@ -44,30 +43,31 @@ export function WalletActions() {
               </span>
             </p>
             {chainId === monadTestnet.id ? (
-              <div className="flex flex-col space-y-2 border border-[#333] p-4 rounded-md">
-                <h2 className="text-lg font-semibold text-left">
-                  Send Transaction Example
-                </h2>
-                <button
-                  className="bg-white text-black rounded-md p-2 text-sm"
-                  onClick={sendTransactionHandler}
-                >
-                  Send Transaction
-                </button>
-                {hash && (
-                  <button
-                    className="bg-white text-black rounded-md p-2 text-sm"
-                    onClick={() =>
-                      window.open(
-                        `https://testnet.monadexplorer.com/tx/${hash}`,
-                        "_blank"
-                      )
-                    }
-                  >
-                    View Transaction
-                  </button>
-                )}
-              </div>
+              // <div className="flex flex-col space-y-2 border border-[#333] p-4 rounded-md">
+              //   <h2 className="text-lg font-semibold text-left">
+              //     Send Transaction Example
+              //   </h2>
+              //   <button
+              //     className="bg-white text-black rounded-md p-2 text-sm"
+              //     onClick={sendTransactionHandler}
+              //   >
+              //     Send Transaction
+              //   </button>
+              //   {hash && (
+              //     <button
+              //       className="bg-white text-black rounded-md p-2 text-sm"
+              //       onClick={() =>
+              //         window.open(
+              //           `https://testnet.monadexplorer.com/tx/${hash}`,
+              //           "_blank"
+              //         )
+              //       }
+              //     >
+              //       View Transaction
+              //     </button>
+              //   )}
+              // </div>
+                <div></div>
             ) : (
               <button
                 className="bg-white text-black rounded-md p-2 text-sm"
