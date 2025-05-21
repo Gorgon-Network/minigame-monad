@@ -12,10 +12,7 @@ export default function Home() {
                 Monad Archer
             </h2>
             <div className="w-full max-w-4xl space-y-6">
-                {/*<User/>*/}
-                <WalletActions/>
                 <UnityGame/>
-                <FarcasterActions/>
             </div>
         </div>
     );

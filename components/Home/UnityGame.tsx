@@ -93,7 +93,7 @@ const UnityGame = () => {
     // Bắt đầu trò chơi mới
     const startGame = async () => {
         if (!isConnected || chainId !== monadTestnet.id) {
-            setError('Vui lòng kết nối ví và chuyển sang Monad Testnet');
+            setError('Please connect wallet and switch to Monad Testnet');
             return;
         }
         try {
@@ -105,7 +105,7 @@ const UnityGame = () => {
             });
             setShouldFetchGameCounter(true);
         } catch (err) {
-            setError('Không thể bắt đầu trò chơi: ' + err.message);
+            setError('Cannot start game: ' + err.message);
         }
     };
 
@@ -132,7 +132,7 @@ const UnityGame = () => {
                                 await refetchGameInfo();
                                 setError('');
                             },
-                            onError: (err) => setError('Không thể kết thúc trò chơi: ' + err.message),
+                            onError: (err) => setError('Cannot end the game: ' + err.message),
                         }
                     );
                 }
@@ -152,55 +152,54 @@ const UnityGame = () => {
 
     return (
         <div style={{ textAlign: 'center', padding: '16px', border: '1px solid #333', borderRadius: '8px' }}>
-            <h2 className="text-lg font-semibold">Trò Chơi Bắn Cung trên Farcaster</h2>
             {isConnected ? (
                 <>
                     <p className="text-sm">
-                        Đã kết nối: <span className="bg-white font-mono text-black rounded-md p-1">{address}</span>
+                        Connected: <span className="bg-white font-mono text-black rounded-md p-1">{address}</span>
                     </p>
                     <p className="text-sm">
                         Chain ID: <span className="bg-white font-mono text-black rounded-md p-1">{chainId}</span>
                     </p>
                     {chainId !== monadTestnet.id && (
                         <button
-                            className="bg-white text-black rounded-md p-2 text-sm mt-2"
+                            className="bg-blue-400 text-black rounded-md p-2 text-sm mt-2"
                             onClick={() => switchChain({ chainId: monadTestnet.id })}
                         >
-                            Chuyển sang Monad Testnet
+                            Switch to Monad Testnet
                         </button>
                     )}
                     <button
-                        className="bg-white text-black rounded-md p-2 text-sm mt-2"
+                        className="bg-red-700 text-white rounded-md p-2 text-sm mt-2"
                         onClick={() => disconnect()}
                     >
-                        Ngắt kết nối ví
+                        Disconnect wallet
                     </button>
                 </>
             ) : (
                 isEthProviderAvailable ? (
                     <button
-                        className="bg-white text-black rounded-md p-2 text-sm mt-2 w-full"
+                        className="bg-blue-400 text-white rounded-md p-2 text-sm mt-2 w-full"
                         onClick={() => connect({ connector: farcasterFrame() })}
                     >
-                        Kết nối ví qua Warpcast
+                        Connect wallet via Warpcast
                     </button>
                 ) : (
-                    <p className="text-sm">Kết nối ví chỉ khả dụng qua Warpcast</p>
+                    <p className="text-sm">Wallet connection only available via Warpcast</p>
                 )
             )}
-            <div>
+                <div>
                 {isConnected && chainId === monadTestnet.id && (
                     <>
                         <button
-                            className="bg-white text-black rounded-md p-2 text-sm mt-2"
+                            className="bg-yellow-500 text-white font-bold rounded-md p-2 text-xl mt-6"
                             onClick={startGame}
                             disabled={isTxPending || gameId !== 0}
                         >
-                            Bắt đầu trò chơi
+                            Start Game
                         </button>
                         {gameId !== 0 && (
                             <div className="mt-4">
-                                <p className="text-sm">ID trò chơi: {gameId}</p>
+                                <p className="text-sm">Game ID: {gameId}</p>
                             </div>
                         )}
                     </>
@@ -208,15 +207,15 @@ const UnityGame = () => {
             </div>
             <Unity
                 unityProvider={unityProvider}
-                style={{ width: 360, height: 210, border: '1px solid black', marginTop: '16px' }}
+                style={{ width: 360, height: 210, border: '1px solid black', marginTop: '16px', visibility: gameId ? 'visible' : 'hidden' }}
             />
             {isGameOver && (
-                <p className="text-sm mt-4">{`Kết thúc trò chơi ${userName}! Điểm: ${score} | Bắn trúng: ${gameInfo.totalHits}/${gameInfo.totalShots}`}</p>
+                <p className="text-sm mt-4"></p>
             )}
             {(error || txError) && (
                 <p className="text-sm text-red-500 mt-4">{error || txError?.message}</p>
             )}
-            {isTxPending && <p className="text-sm mt-4">Đang xử lý giao dịch...</p>}
+            {isTxPending && <p className="text-sm mt-4">Processing transaction...</p>}
         </div>
     );
 };
