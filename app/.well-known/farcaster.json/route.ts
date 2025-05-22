@@ -18,6 +18,11 @@ export async function GET() {
       splashBackgroundColor: "#ffffff",
       webhookUrl: `${APP_URL}/api/webhook`,
     },
+    accountAssociation: {
+      "header": "eyJmaWQiOjEwNzA0MDUsInR5cGUiOiJjdXN0b2R5Iiwia2V5IjoiMHhCODdDZGRCOEI4NGQ3YjVlMGQzN0VEQzk3NzFhZjc0MjgzYTQ3ZjUxIn0",
+      "payload": "eyJkb21haW4iOiJtaW5pLmJsYXN0LWNvbW1hbmRlci54eXoifQ",
+      "signature": "MHg3NDQ5OTI3ZDk5NmJjODdkN2QxNzBjMDEzYmYzZDBlZjAwZjMwNzA5MzE0M2ZlYTI2ZjhjMzJmMjMxMDBmYzM2MTg1MjBlYjU2YzI1YzNmMzZiOWJiZjkyMDgxMjBlYzMwNTMyNzIyNjE4NmQwOWRjNDgyMDUxMTE0NzQ1YmViODFj"
+    }
   };
 
   return NextResponse.json(farcasterConfig);
