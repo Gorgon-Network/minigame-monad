@@ -111,14 +111,14 @@ const UnityGame = () => {
                 chainId: monadTestnet.id,
             });
             setShouldFetchGameCounter(true);
-        } catch (err) {
+        } catch (err: any) {
             setError('Cannot start game: ' + err.message);
         }
     };
 
     // Xử lý sự kiện GameOver từ window.postMessage
     const handleGameOver = useCallback(
-        (event) => {
+        (event: any) => {
             if (event.data.type === 'GameOver') {
                 console.log('GameOver received:', event.data);
                 const { userName, score } = event.data;
