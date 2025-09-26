@@ -39,7 +39,9 @@ const UnityGame = () => {
         functionName: 'getGameInfo',
         args: [gameId],
         chainId: monadTestnet.id,
-        enabled: gameId !== 0 && isConnected && chainId === monadTestnet.id,
+        query: {
+            enabled: gameId !== 0 && isConnected && chainId === monadTestnet.id,
+        }
     });
 
     // Fetch ID trò chơi đang hoạt động
@@ -49,7 +51,9 @@ const UnityGame = () => {
         functionName: 'getActiveGameId',
         args: [address],
         chainId: monadTestnet.id,
-        enabled: isConnected && chainId === monadTestnet.id,
+        query: {
+            enabled: isConnected && chainId === monadTestnet.id,
+        }
     });
 
     // Fetch gameCounter
@@ -62,7 +66,9 @@ const UnityGame = () => {
                 chainId: monadTestnet.id,
             },
         ],
-        enabled: shouldFetchGameCounter && isConnected && chainId === monadTestnet.id,
+        query: {
+            enabled: shouldFetchGameCounter && isConnected && chainId === monadTestnet.id,
+        }
     });
 
     useEffect(() => {
