@@ -73,7 +73,8 @@ const UnityGame = () => {
 
     useEffect(() => {
         if (gameInfoData) {
-            const [player, isActive, totalShots, totalHits] = gameInfoData;
+            // @ts-ignore
+            const [ totalShots, totalHits] = gameInfoData;
             setGameInfo({ totalShots: Number(totalShots), totalHits: Number(totalHits) });
         }
     }, [gameInfoData]);
