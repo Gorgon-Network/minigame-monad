@@ -3,7 +3,7 @@
 import {FarcasterActions} from "@/components/Home/FarcasterActions";
 import {User} from "@/components/Home/User";
 import {WalletActions} from "@/components/Home/WalletActions";
-import UnityGame from "@/components/Home/UnityGame";
+import UnityGame from "@/components/unity/UnityGame";
 
 export default function Home() {
     return (
